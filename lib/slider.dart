@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lamesia/datapersonal.dart';
+import 'package:lamesia/loginpage.dart';
 import 'color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,10 +23,16 @@ class SliderPage extends StatelessWidget {
             padding: EdgeInsets.only(right: 30),
             alignment: Alignment.centerRight,
             height: 100,
-            child: Text(
-              'Lewati',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
+              child: Text(
+                'Lewati',
+                style: GoogleFonts.roboto(
+                  fontSize: 20,
+                ),
               ),
             ),
           ),

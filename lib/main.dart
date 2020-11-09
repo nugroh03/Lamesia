@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lamesia/klinikpage.dart';
 import 'package:lamesia/loginpage.dart';
 import 'package:lamesia/screen_opening.dart';
 

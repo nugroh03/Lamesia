@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lamesia/datapersonal.dart';
 import 'color.dart';
 
 class DaftarPage extends StatefulWidget {
@@ -164,7 +165,12 @@ class _DaftarPageState extends State<DaftarPage> {
                     ),
                     FlatButton(
                         color: red,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DatapersonalPage()));
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           child: Text(

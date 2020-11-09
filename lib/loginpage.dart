@@ -4,6 +4,8 @@ import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
 import 'package:lamesia/gantipassword.dart';
 import 'package:lamesia/gantipassword.dart';
+import 'package:lamesia/menu_page.dart';
+
 import 'color.dart';
 
 class LoginPage extends StatefulWidget {
@@ -136,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => DatapersonalPage()));
+                                  builder: (context) => MenuPage()));
                         },
                         child: Container(
                           alignment: Alignment.center,

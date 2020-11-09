@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/daftarpage.dart';
+import 'package:lamesia/loginpage.dart';
 import 'color.dart';
 
 class GantipassPage extends StatefulWidget {
@@ -317,7 +318,12 @@ class _GantipassPageState extends State<GantipassPage> {
                   ),
                   FlatButton(
                       color: red,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                      },
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
