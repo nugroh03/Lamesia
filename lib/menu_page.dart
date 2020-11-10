@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/chat_page.dart';
 import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
-import 'package:lamesia/dokter_page.dart';
+import 'dokter_page.dart';
 import 'package:lamesia/gantipassword.dart';
 import 'package:lamesia/gantipassword.dart';
 import 'package:lamesia/home_page.dart';

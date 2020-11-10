@@ -4,7 +4,7 @@ import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
 import 'package:lamesia/gantipassword.dart';
 import 'package:lamesia/gantipassword.dart';
-import 'package:lamesia/profil_doctor.dart';
+import 'profil_doctor.dart';
 import 'color.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -27,87 +27,84 @@ class _MyDokterPageState extends State<MyDokterPage> {
     image,
     title,
   ) {
-    return FlatButton(
-      padding: EdgeInsets.zero,
-      onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ProfilDoctor()));
-      },
-      child: Container(
-        padding: EdgeInsets.all(10),
-        width: MediaQuery.of(context).size.width,
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: Row(
-                children: [
-                  ClipOval(
-                    child: Container(
-                      color: Colors.red[50],
-                      height: 60,
-                      width: 60,
-                      child: Icon(
-                        image,
-                        size: 40,
-                        color: red,
-                      ),
+    return Container(
+      padding: EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: Row(
+              children: [
+                ClipOval(
+                  child: Container(
+                    color: Colors.red[50],
+                    height: 60,
+                    width: 60,
+                    child: Icon(
+                      image,
+                      size: 40,
+                      color: red,
                     ),
-                  ),
-                  SizedBox(width: 20),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(title,
-                            style: GoogleFonts.poppins(
-                                fontSize: 15, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          child: Text('Dokter Umum',
-                              style: GoogleFonts.poppins(
-                                  fontSize: 12, color: grey2)),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 10, left: 20),
-              alignment: Alignment.centerRight,
-              child: FlatButton(
-                color: Colors.red[50],
-                onPressed: () {},
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.person,
-                        size: 20,
-                        color: red,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text('Profil',
-                          style: GoogleFonts.poppins(fontSize: 12, color: red)),
-                    ],
                   ),
                 ),
+                SizedBox(width: 20),
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        child: Text('Dokter Umum',
+                            style: GoogleFonts.poppins(
+                                fontSize: 12, color: grey2)),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10, left: 20),
+            alignment: Alignment.centerRight,
+            child: FlatButton(
+              color: Colors.red[50],
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilDoctor()));
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.2,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      size: 20,
+                      color: red,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('Profil',
+                        style: GoogleFonts.poppins(fontSize: 15, color: red)),
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

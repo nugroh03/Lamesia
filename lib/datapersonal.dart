@@ -458,6 +458,7 @@ class _DatapersonalPageState extends State<DatapersonalPage>
                     ]),
                 preferredSize: Size.fromHeight(40)),
             body: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 controller: _tabController,
                 children: [infoPersonal(), infoKesehatan()]),
           ),
