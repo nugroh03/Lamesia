@@ -22,16 +22,41 @@ class _JanjiTemuState extends State<JanjiTemu>
   TabController _tabdetails;
   bool _jtvisible = true;
   bool _detailvisible = false;
+  bool _blockvisible = false;
+  bool _notifjanjitemu = false;
+  final isiklinik = new TextEditingController();
+  final isidokter = new TextEditingController();
+  final isitanggal = new TextEditingController();
+  final isijam = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    isiklinik.text = 'Nama Klinik';
     _tabController = TabController(vsync: this, length: 2);
   }
 
   void _toggleTab() {
     _tabIndex = _tabController.index + 1;
     _tabController.animateTo(_tabIndex);
+  }
+
+  Widget _block() {
+    return Visibility(
+      visible: _blockvisible,
+      child: InkWell(
+          onTap: () {
+            this.setState(() {
+              _blockvisible = false;
+              _notifjanjitemu = false;
+            });
+          },
+          child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              color: Color.fromRGBO(0, 0, 0, 0.20),
+              child: Text(""))),
+    );
   }
 
   Widget menu(
@@ -154,6 +179,157 @@ class _JanjiTemuState extends State<JanjiTemu>
     );
   }
 
+  Widget notifjanjitemu() {
+    return Visibility(
+        visible: _notifjanjitemu,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              color: white,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          height: MediaQuery.of(context).size.height * 0.75,
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Column(
+            children: [
+              Flexible(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Container(
+                      child: Icon(
+                    Icons.calendar_today,
+                    color: Colors.red,
+                    size: 80,
+                  )),
+                ),
+              ),
+              Flexible(
+                flex: 4,
+                child: Container(
+                  child: Column(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                child: Text(
+                                  'Janji Temu Anda',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 3,
+                                child: Text(
+                                  'Segera untuk menemui dokter anda tepat sesuai dengan waktu yang telah anda tentukan',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              TextField(
+                                controller: isiklinik,
+                                decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.local_hospital,
+                                      size: 30,
+                                    ),
+                                    labelStyle: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                    labelText: 'Klinik',
+                                    hintStyle: TextStyle(color: grey3),
+                                    hintText: 'Nama Klinik'),
+                              ),
+                              TextField(
+                                controller: isidokter,
+                                decoration: InputDecoration(
+                                  suffixIcon: Icon(
+                                    Icons.people,
+                                    size: 30,
+                                  ),
+                                  labelStyle: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  labelText: 'Dokter',
+                                ),
+                              ),
+                              TextField(
+                                controller: isitanggal,
+                                decoration: InputDecoration(
+                                  suffixIcon: Icon(
+                                    Icons.calendar_today,
+                                    size: 30,
+                                  ),
+                                  labelStyle: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  labelText: 'Tanggal',
+                                ),
+                              ),
+                              TextField(
+                                controller: isijam,
+                                decoration: InputDecoration(
+                                  suffixIcon: Icon(
+                                    Icons.lock_clock,
+                                    size: 30,
+                                  ),
+                                  labelStyle: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  labelText: 'Jam',
+                                ),
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.01,
+                              ),
+                              FlatButton(
+                                  color: red,
+                                  textColor: white,
+                                  minWidth:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  onPressed: () {
+                                    setState(() {
+                                      _blockvisible = false;
+                                      _notifjanjitemu = false;
+                                      _jtvisible = true;
+                                    });
+                                  },
+                                  child: Text('OK'))
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+
   Widget janjiTemu() {
     return Visibility(
       visible: _jtvisible,
@@ -178,7 +354,16 @@ class _JanjiTemuState extends State<JanjiTemu>
                         Icons.notifications_none,
                         size: 35,
                       ),
-                      onPressed: () {})
+                      onPressed: () {
+                        setState(() {
+                          isiklinik.text = 'Nama Klinik';
+                          isidokter.text = 'Nama Dokter';
+                          isitanggal.text = '9 September 2020';
+                          isijam.text = '14:00';
+                          _blockvisible = true;
+                          _notifjanjitemu = true;
+                        });
+                      })
                 ],
               ),
             ),
@@ -327,6 +512,7 @@ class _JanjiTemuState extends State<JanjiTemu>
 
   Widget menudetail2() {
     return Container(
+      padding: EdgeInsets.all(10),
       color: white,
       child: Column(
         children: [
@@ -374,7 +560,7 @@ class _JanjiTemuState extends State<JanjiTemu>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Kessimpulan Pemeriksaan',
+                Text('Kesimpulan Pemeriksaan',
                     style: GoogleFonts.poppins(
                       fontSize: 15,
                     )),
@@ -444,20 +630,18 @@ class _JanjiTemuState extends State<JanjiTemu>
             ),
           ),
           Container(
-              padding: EdgeInsets.all(10),
               child: Container(
-                padding: EdgeInsets.all(10),
-                alignment: Alignment.centerLeft,
-                height: MediaQuery.of(context).size.height * 0.1,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.red[50],
-                    border: Border.all(width: 1, color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(4))),
-                child: Text('Migrane',
-                    style:
-                        GoogleFonts.poppins(fontSize: 25, color: Colors.red)),
-              ))
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                color: Colors.red[50],
+                border: Border.all(width: 1, color: Colors.red),
+                borderRadius: BorderRadius.all(Radius.circular(4))),
+            child: Text('Migrane',
+                style: GoogleFonts.poppins(fontSize: 25, color: Colors.red)),
+          ))
         ],
       ),
     );
@@ -569,7 +753,12 @@ class _JanjiTemuState extends State<JanjiTemu>
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
-        children: [janjiTemu(), details()],
+        children: [
+          Positioned(child: janjiTemu()),
+          Positioned(child: details()),
+          Positioned(child: _block()),
+          Center(child: notifjanjitemu())
+        ],
       ),
     );
   }
