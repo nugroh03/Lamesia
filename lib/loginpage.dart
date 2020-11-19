@@ -26,14 +26,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(top: 50, left: 20, right: 20),
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
+      body: Container(
+        padding: EdgeInsets.only(top: 50, left: 20, right: 20),
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(
                 alignment: Alignment.centerLeft,
                 height: 100,
                 width: 300,
@@ -41,145 +42,294 @@ class _LoginPageState extends State<LoginPage> {
                   'assets/Logo Lamesia.png',
                 ),
               ),
-              SizedBox(
-                height: 50,
-              ),
-              Container(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Masuk',
-                      style: GoogleFonts.roboto(
-                          fontSize: 30,
-                          color: textblack,
-                          fontWeight: FontWeight.bold)),
-                  Text('Masukkan data anda dengan benar',
-                      style: GoogleFonts.roboto(fontSize: 15, color: textred)),
-                ],
-              )),
-              SizedBox(
-                height: 50,
-              ),
-              Container(
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('NO. WHATSAPP',
-                              style: GoogleFonts.roboto(fontSize: 15)),
-                          Container(
-                            padding: EdgeInsets.only(top: 5),
-                            height: 50,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                                hintText: 'Nomer Whatsapp',
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1)),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('PASSWORD',
-                              style: GoogleFonts.roboto(
-                                fontSize: 15,
-                              )),
-                          Container(
-                            padding: EdgeInsets.only(top: 5),
-                            height: 50,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                                hintText: 'Password',
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1)),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => GantipassPage()),
-                              );
-                            },
-                            child: Container(
-                                alignment: Alignment.center,
-                                child: Text('Lupa Password ?',
-                                    style: GoogleFonts.roboto(
-                                        fontSize: 17, color: textred))),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    FlatButton(
-                        color: red,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MenuPage()));
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'MASUK',
-                            style: GoogleFonts.roboto(
-                                fontSize: 20, color: textwhite),
-                          ),
-                        )),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('Belum memiliki Akun?',
-                              style: GoogleFonts.roboto(
-                                fontSize: 17,
-                              )),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DaftarPage()));
-                            },
-                            child: Text(' Daftar',
-                                style: GoogleFonts.roboto(
-                                    fontSize: 17, color: textred)),
-                          )
-                        ],
-                      ),
-                    )
+                    Text('Masuk',
+                        style: GoogleFonts.roboto(
+                            fontSize: 30,
+                            color: textblack,
+                            fontWeight: FontWeight.bold)),
+                    Text('Masukkan data anda dengan benar',
+                        style:
+                            GoogleFonts.roboto(fontSize: 15, color: textred)),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+            Flexible(
+                flex: 3,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('NO. WHATSAPP',
+                                style: GoogleFonts.roboto(fontSize: 15)),
+                            Container(
+                              padding: EdgeInsets.only(top: 5),
+                              height: 50,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5),
+                                  hintText: 'Nomer Whatsapp',
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.white, width: 1)),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('PASSWORD',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 15,
+                                )),
+                            Container(
+                              padding: EdgeInsets.only(top: 5),
+                              height: 50,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5),
+                                  hintText: 'Password',
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.white, width: 1)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => GantipassPage()),
+                                );
+                              },
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text('Lupa Password ?',
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: textred))),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                      ),
+                      FlatButton(
+                          color: red,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MenuPage()));
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'MASUK',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 20, color: textwhite),
+                            ),
+                          )),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text('Belum memiliki Akun?',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 17,
+                                )),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DaftarPage()));
+                              },
+                              child: Text(' Daftar',
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 17, color: textred)),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+            /*Container(
+              alignment: Alignment.centerLeft,
+              height: 100,
+              width: 300,
+              child: Image.asset(
+                'assets/Logo Lamesia.png',
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            
+            Container(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Masuk',
+                    style: GoogleFonts.roboto(
+                        fontSize: 30,
+                        color: textblack,
+                        fontWeight: FontWeight.bold)),
+                Text('Masukkan data anda dengan benar',
+                    style: GoogleFonts.roboto(fontSize: 15, color: textred)),
+              ],
+            )),
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('NO. WHATSAPP',
+                            style: GoogleFonts.roboto(fontSize: 15)),
+                        Container(
+                          padding: EdgeInsets.only(top: 5),
+                          height: 50,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(5),
+                              hintText: 'Nomer Whatsapp',
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.white, width: 1)),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('PASSWORD',
+                            style: GoogleFonts.roboto(
+                              fontSize: 15,
+                            )),
+                        Container(
+                          padding: EdgeInsets.only(top: 5),
+                          height: 50,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(5),
+                              hintText: 'Password',
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.white, width: 1)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GantipassPage()),
+                            );
+                          },
+                          child: Container(
+                              alignment: Alignment.center,
+                              child: Text('Lupa Password ?',
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 17, color: textred))),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  FlatButton(
+                      color: red,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MenuPage()));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'MASUK',
+                          style: GoogleFonts.roboto(
+                              fontSize: 20, color: textwhite),
+                        ),
+                      )),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('Belum memiliki Akun?',
+                            style: GoogleFonts.roboto(
+                              fontSize: 17,
+                            )),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DaftarPage()));
+                          },
+                          child: Text(' Daftar',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 17, color: textred)),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )*/
+          ],
         ),
       ),
     );
