@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
               Flexible(
                 flex: 1,
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(5),
                   color: white,
                   child: Row(
                     children: [

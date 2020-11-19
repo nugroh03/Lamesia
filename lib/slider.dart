@@ -15,7 +15,7 @@ class SliderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.only(top: 30),
+      padding: EdgeInsets.only(top: 5),
       color: white,
       child: Column(
         children: [
