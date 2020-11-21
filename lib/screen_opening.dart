@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/loginpage.dart';
 import 'color.dart';
@@ -98,6 +99,8 @@ class _ScreenOpeningState extends State<ScreenOpening> {
                       ),
                     ),
                     Container(
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       alignment: Alignment.topCenter,
                       child: FlatButton(
                           color: red,
@@ -118,15 +121,33 @@ class _ScreenOpeningState extends State<ScreenOpening> {
                           child: Container(
                             child: Row(
                               children: [
-                                Text(
-                                  'BERIKUT',
-                                  style: GoogleFonts.roboto(
-                                      fontSize: 20, color: textwhite),
+                                Flexible(
+                                  flex: 3,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: AutoSizeText(
+                                      'BERIKUT',
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: textwhite),
+                                    ),
+                                  ),
                                 ),
-                                Icon(
-                                  Icons.forward,
-                                  color: textwhite,
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: LayoutBuilder(
+                                        builder: (context, constraint) {
+                                      return new Icon(Icons.forward,
+                                          color: white,
+                                          size: constraint.biggest.height);
+                                    }),
+                                  ),
                                 )
+
+                                // Icon(Icons.forward,
+                                //     color: textwhite,
+                                //     size: onstraint.biggest.height)
                               ],
                             ),
                           )),

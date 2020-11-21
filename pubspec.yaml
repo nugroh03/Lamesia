@@ -28,6 +28,7 @@ dependencies:
   group_radio_button: ^1.0.1
   curved_navigation_bar: ^0.3.4
   ionicons: ^0.0.3
+  auto_size_text: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

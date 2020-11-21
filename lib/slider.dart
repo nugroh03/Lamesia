@@ -20,7 +20,7 @@ class SliderPage extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(right: 30),
+            padding: EdgeInsets.only(right: 20),
             alignment: Alignment.centerRight,
             height: 100,
             child: InkWell(
@@ -31,7 +31,7 @@ class SliderPage extends StatelessWidget {
               child: Text(
                 'Lewati',
                 style: GoogleFonts.roboto(
-                  fontSize: 20,
+                  fontSize: 15,
                 ),
               ),
             ),

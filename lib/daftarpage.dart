@@ -37,7 +37,7 @@ class _DaftarPageState extends State<DaftarPage> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Container(
                   child: Column(
@@ -53,7 +53,7 @@ class _DaftarPageState extends State<DaftarPage> {
                 ],
               )),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Container(
                 child: Column(
