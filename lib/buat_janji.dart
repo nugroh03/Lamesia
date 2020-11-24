@@ -5,16 +5,16 @@ import 'package:lamesia/menu_page.dart';
 import 'color.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
-class DatapersonalPage extends StatefulWidget {
-  DatapersonalPage({Key key, this.title}) : super(key: key);
+class BuatJanji extends StatefulWidget {
+  BuatJanji({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _DatapersonalPageState createState() => _DatapersonalPageState();
+  _BuatJanjiState createState() => _BuatJanjiState();
 }
 
-class _DatapersonalPageState extends State<DatapersonalPage>
+class _BuatJanjiState extends State<BuatJanji>
     with SingleTickerProviderStateMixin {
   String kelamin = 'Laki-laki';
   String alergi = 'Ya';
@@ -25,7 +25,7 @@ class _DatapersonalPageState extends State<DatapersonalPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 2);
+    _tabController = TabController(vsync: this, length: 3);
   }
 
   void _toggleTab() {
@@ -33,7 +33,7 @@ class _DatapersonalPageState extends State<DatapersonalPage>
     _tabController.animateTo(_tabIndex);
   }
 
-  Widget infoPersonal() {
+  Widget details() {
     return Container(
       padding: EdgeInsets.only(top: 10, right: 15, left: 15, bottom: 10),
       child: SingleChildScrollView(
@@ -262,7 +262,7 @@ class _DatapersonalPageState extends State<DatapersonalPage>
     );
   }
 
-  Widget infoKesehatan() {
+  Widget selesai() {
     return Container(
       padding: EdgeInsets.only(top: 10, right: 15, left: 15, bottom: 10),
       child: SingleChildScrollView(
@@ -421,51 +421,77 @@ class _DatapersonalPageState extends State<DatapersonalPage>
     );
   }
 
+  Widget waktu() {
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       appBar: PreferredSize(
           child: Container(
             alignment: Alignment.centerLeft,
             height: 100,
             padding: EdgeInsets.only(
               top: 30,
-              left: 30,
+              left: 10,
             ),
-            child: Text(
-              'Data Personal',
-              style: GoogleFonts.poppins(
-                color: black,
-                fontSize: 25,
-              ),
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    width: MediaQuery.of(context).size.width,
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 30,
+                        ),
+                        onPressed: () {}),
+                  ),
+                ),
+                Flexible(
+                  flex: 5,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Buat Janji',
+                      style: GoogleFonts.poppins(
+                        color: black,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           preferredSize: Size.fromHeight(100)),
       body: Container(
         child: DefaultTabController(
-          length: 2,
+          length: 3,
           child: Scaffold(
+            backgroundColor: white,
             appBar: PreferredSize(
                 child: TabBar(
                     controller: _tabController,
                     labelColor: Colors.black,
                     indicatorColor: red,
                     tabs: [
-                      Tab(
-                        text: 'INFO PERSONAL',
-                      ),
-                      Tab(text: 'INFO KESEHATAN')
+                      Tab(text: '1. WAKTU'),
+                      Tab(text: '2. DETAILS'),
+                      Tab(text: '3. SELESAI')
                     ]),
                 preferredSize: Size.fromHeight(40)),
             body: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 controller: _tabController,
-                children: [infoPersonal(), infoKesehatan()]),
+                children: [waktu(), details(), selesai()]),
           ),
         ),
       ),
     );
-
-    
   }
 }

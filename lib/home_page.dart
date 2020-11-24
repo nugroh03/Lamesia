@@ -7,6 +7,7 @@ import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
 import 'package:lamesia/gantipassword.dart';
 import 'package:lamesia/gantipassword.dart';
+import 'package:lamesia/klinikpage.dart';
 import 'color.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -28,51 +29,57 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  Widget menu(image, title, ket) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 3,
-              blurRadius: 3,
-              offset: Offset(0, 2), // changes position of shadow
+  Widget menu(image, title, ket, onpres) {
+    return FlatButton(
+      padding: EdgeInsets.zero,
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 3,
+                blurRadius: 3,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              child: CircleAvatar(
+                  backgroundColor: Colors.red[50],
+                  child: SvgPicture.asset(
+                    image,
+                    height: 55,
+                    width: 55,
+                  )),
             ),
-          ]),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 80,
-            height: 80,
-            child: CircleAvatar(
-                backgroundColor: Colors.red[50],
-                child: SvgPicture.asset(
-                  image,
-                  height: 55,
-                  width: 55,
-                )),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(title,
-              style: GoogleFonts.roboto(
-                  fontSize: 15, fontWeight: FontWeight.bold)),
-          SizedBox(
-            height: 5,
-          ),
-          Text(ket, style: GoogleFonts.roboto(fontSize: 12, color: grey)),
-        ],
+            SizedBox(
+              height: 20,
+            ),
+            Text(title,
+                style: GoogleFonts.roboto(
+                    fontSize: 15, fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 5,
+            ),
+            Text(ket, style: GoogleFonts.roboto(fontSize: 12, color: grey)),
+          ],
+        ),
       ),
+      onPressed: onpres,
     );
   }
 
@@ -229,12 +236,19 @@ class _HomePageState extends State<HomePage> {
                       mainAxisSpacing: 20,
                       crossAxisCount: 2,
                       children: [
-                        menu('assets/Group 84.svg', 'Dokter', 'Cari dokter'),
+                        menu('assets/Group 84.svg', 'Dokter', 'Cari dokter',
+                            () {}),
                         menu('assets/Group 85.svg', 'Klinik',
-                            'Daftar klinik terdekat'),
-                        menu('assets/Path 6572.svg', 'Perawat', 'Cari Perawat'),
+                            'Daftar klinik terdekat', () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KlinikPage()));
+                        }),
+                        menu('assets/Path 6572.svg', 'Perawat', 'Cari Perawat',
+                            () {}),
                         menu('assets/noun_Pharmacy_2080745.svg', 'Apotek',
-                            'Beli Obat'),
+                            'Beli Obat', () {}),
                       ]),
                 ),
               )

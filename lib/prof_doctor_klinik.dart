@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lamesia/buat_janji.dart';
 import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
 import 'package:lamesia/gantipassword.dart';
@@ -7,16 +9,16 @@ import 'package:lamesia/gantipassword.dart';
 import 'color.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-class ProfilDoctor extends StatefulWidget {
-  ProfilDoctor({Key key, this.title}) : super(key: key);
+class ProfilDoctorKlinik extends StatefulWidget {
+  ProfilDoctorKlinik({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _ProfilDoctorState createState() => _ProfilDoctorState();
+  _ProfilDoctorKlinikState createState() => _ProfilDoctorKlinikState();
 }
 
-class _ProfilDoctorState extends State<ProfilDoctor> {
+class _ProfilDoctorKlinikState extends State<ProfilDoctorKlinik> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +43,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
                 offset: Offset(0, 2), // changes position of shadow
               ),
             ]),
-        padding: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -71,8 +73,8 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
                   ClipOval(
                     child: Container(
                       color: Colors.red[50],
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       child: Icon(
                         Icons.emoji_people,
                         size: 100,
@@ -101,7 +103,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 10,
             ),
             Container(
               padding: EdgeInsets.only(top: 10, left: 10),
@@ -109,31 +111,117 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.flash_on,
-                    size: 30,
-                    color: red,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('2 Tahun',
-                            style: GoogleFonts.poppins(
-                                fontSize: 12, fontWeight: FontWeight.bold)),
-                        Text('Pengalaman',
-                            style: GoogleFonts.poppins(
-                                fontSize: 12, color: grey2)),
-                      ],
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border(
+                              right: BorderSide(width: 1, color: grey3),
+                              bottom: BorderSide(width: 1, color: grey3))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.pin_drop_rounded,
+                            size: 30,
+                            color: red,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Lokasi Kerja',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold)),
+                                Text('Klinik Praktek',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12, color: grey2)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(width: 1, color: grey3))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.flash_on,
+                            size: 30,
+                            color: red,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('2 Tahun',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold)),
+                                Text('Pengalaman',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12, color: grey2)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                color: red,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BuatJanji()));
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        child: SvgPicture.asset(
+                          'assets/Icon-6.svg',
+                          color: white,
+                          height: 20,
+                        ),
+                      ),
+                      Container(
+                        child: Text('BUAT JANJI',
+                            style: GoogleFonts.poppins(
+                                fontSize: 15,
+                                color: white,
+                                fontWeight: FontWeight.bold)),
+                      )
+                    ],
+                  ),
+                )),
             SizedBox(
               height: 10,
             ),

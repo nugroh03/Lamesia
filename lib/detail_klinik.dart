@@ -1,29 +1,36 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lamesia/buat_janji.dart';
+import 'package:lamesia/klinikpage.dart';
 import 'package:lamesia/menu_page.dart';
+import 'package:lamesia/prof_doctor_klinik.dart';
 import 'package:lamesia/profil_doctor.dart';
 
 import 'color.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
-class JanjiTemu extends StatefulWidget {
-  JanjiTemu({Key key, this.title}) : super(key: key);
+class DetailKlinik extends StatefulWidget {
+  DetailKlinik({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _JanjiTemuState createState() => _JanjiTemuState();
+  _DetailKlinikState createState() => _DetailKlinikState();
 }
 
-class _JanjiTemuState extends State<JanjiTemu>
+class _DetailKlinikState extends State<DetailKlinik>
     with SingleTickerProviderStateMixin {
   int _tabIndex = 0;
   TabController _tabController;
   TabController _tabdetails;
   bool _jtvisible = true;
   bool _detailvisible = false;
+  bool _profildoctor = false;
   bool _blockvisible = false;
-  bool _notifjanjitemu = false;
+  bool _notifdetailklinik = false;
   final isiklinik = new TextEditingController();
   final isidokter = new TextEditingController();
   final isitanggal = new TextEditingController();
@@ -48,7 +55,7 @@ class _JanjiTemuState extends State<JanjiTemu>
           onTap: () {
             this.setState(() {
               _blockvisible = false;
-              _notifjanjitemu = false;
+              _notifdetailklinik = false;
             });
           },
           child: Container(
@@ -64,8 +71,6 @@ class _JanjiTemuState extends State<JanjiTemu>
     title,
   ) {
     return Container(
-      padding: EdgeInsets.all(10),
-      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -75,15 +80,17 @@ class _JanjiTemuState extends State<JanjiTemu>
               bottomRight: Radius.circular(10)),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.4),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 3,
               blurRadius: 5,
               offset: Offset(0, 2), // changes position of shadow
             ),
           ]),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 0),
+      width: MediaQuery.of(context).size.width,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
             child: Row(
@@ -123,68 +130,101 @@ class _JanjiTemuState extends State<JanjiTemu>
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 20),
-            alignment: Alignment.centerRight,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.lock_clock,
-                    size: 20,
-                    color: grey2,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('1 jam',
-                      style: GoogleFonts.poppins(fontSize: 15, color: grey2)),
-                ],
-              ),
+            padding: EdgeInsets.only(
+              top: 20,
+              left: 20,
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            decoration:
-                BoxDecoration(border: Border(top: BorderSide(width: 1))),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            alignment: Alignment.bottomRight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  child: Text('0 hari',
-                      style: GoogleFonts.poppins(fontSize: 15, color: grey2)),
-                ),
-                Container(
-                  child: Text('9 September, 14:00 ',
-                      style: GoogleFonts.poppins(fontSize: 15, color: grey2)),
-                ),
-                Container(
-                  child: FlatButton(
-                    color: Colors.green[50],
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      setState(() {
-                        _jtvisible = false;
-                        _detailvisible = true;
-                      });
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      child: Text('DETAIL',
-                          style: GoogleFonts.poppins(
-                              fontSize: 17, color: Colors.green)),
+                FlatButton(
+                  height: 20,
+                  padding: EdgeInsets.all(5),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      side: BorderSide(color: Colors.red)),
+                  color: Colors.red[50],
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfilDoctorKlinik()));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.20,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            child: Icon(
+                              Icons.person,
+                              size: 20,
+                              color: red,
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text('Profil',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 12, color: red)),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                )
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                FlatButton(
+                  height: 20,
+                  padding: EdgeInsets.all(5),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      side: BorderSide(color: Colors.red)),
+                  color: Colors.red[50],
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BuatJanji()));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.20,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: SvgPicture.asset(
+                              'assets/Icon-6.svg',
+                              height: 20,
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 2,
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: AutoSizeText('Buat janji ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 12, color: red)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           )
@@ -193,9 +233,9 @@ class _JanjiTemuState extends State<JanjiTemu>
     );
   }
 
-  Widget notifjanjitemu() {
+  Widget notifdetailklinik() {
     return Visibility(
-        visible: _notifjanjitemu,
+        visible: _notifdetailklinik,
         child: Container(
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -326,7 +366,7 @@ class _JanjiTemuState extends State<JanjiTemu>
                                   onPressed: () {
                                     setState(() {
                                       _blockvisible = false;
-                                      _notifjanjitemu = false;
+                                      _notifdetailklinik = false;
                                       _jtvisible = true;
                                     });
                                   },
@@ -344,7 +384,7 @@ class _JanjiTemuState extends State<JanjiTemu>
         ));
   }
 
-  Widget janjiTemu() {
+  Widget detailKlinik() {
     return Visibility(
       visible: _jtvisible,
       child: Scaffold(
@@ -353,32 +393,41 @@ class _JanjiTemuState extends State<JanjiTemu>
             child: Container(
               alignment: Alignment.centerLeft,
               height: 100,
-              padding: EdgeInsets.only(top: 30, left: 30, right: 20),
+              padding: EdgeInsets.only(top: 30, left: 20, right: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Janji Temu',
-                    style: GoogleFonts.poppins(
-                        color: black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      width: MediaQuery.of(context).size.width,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => KlinikPage()));
+                          }),
+                    ),
                   ),
-                  IconButton(
-                      icon: Icon(
-                        Icons.notifications_none,
-                        size: 35,
+                  Flexible(
+                    flex: 6,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        'Nama Klinik',
+                        style: GoogleFonts.poppins(
+                            color: black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          isiklinik.text = 'Nama Klinik';
-                          isidokter.text = 'Nama Dokter';
-                          isitanggal.text = '9 September 2020';
-                          isijam.text = '14:00';
-                          _blockvisible = true;
-                          _notifjanjitemu = true;
-                        });
-                      })
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -396,7 +445,7 @@ class _JanjiTemuState extends State<JanjiTemu>
                       tabs: [
                         Tab(
                           child: Text(
-                            'YANG AKAN',
+                            'DOKTER',
                             style: GoogleFonts.poppins(
                               color: black,
                               fontSize: 18,
@@ -405,7 +454,7 @@ class _JanjiTemuState extends State<JanjiTemu>
                         ),
                         Tab(
                           child: Text(
-                            'YANG LALU',
+                            'FASILITAS',
                             style: GoogleFonts.poppins(
                               color: black,
                               fontSize: 18,
@@ -419,9 +468,16 @@ class _JanjiTemuState extends State<JanjiTemu>
                   controller: _tabController,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                       child: ListView(
                         children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            height: 50,
+                            child: Text('Daftar Dokter',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 20, color: grey2)),
+                          ),
                           menu(
                             Icons.emoji_people,
                             'Nama Dokter',
@@ -526,7 +582,7 @@ class _JanjiTemuState extends State<JanjiTemu>
     );
   }
 
-  Widget menudetail2() {
+  /*Widget menudetail2() {
     return Container(
       padding: EdgeInsets.all(10),
       color: white,
@@ -661,9 +717,9 @@ class _JanjiTemuState extends State<JanjiTemu>
         ],
       ),
     );
-  }
+  }*/
 
-  Widget details() {
+  /*Widget details() {
     return Visibility(
       visible: _detailvisible,
       child: Scaffold(
@@ -763,7 +819,7 @@ class _JanjiTemuState extends State<JanjiTemu>
         ),
       ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -771,10 +827,9 @@ class _JanjiTemuState extends State<JanjiTemu>
       color: white,
       child: Stack(
         children: [
-          Positioned(child: janjiTemu()),
-          Positioned(child: details()),
+          Positioned(child: detailKlinik()),
           Positioned(child: _block()),
-          Center(child: notifjanjitemu())
+          Center(child: notifdetailklinik())
         ],
       ),
     );
