@@ -360,9 +360,9 @@ class _JanjiTemuState extends State<JanjiTemu>
                   Text(
                     'Janji Temu',
                     style: GoogleFonts.poppins(
-                      color: black,
-                      fontSize: 25,
-                    ),
+                        color: black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
                   ),
                   IconButton(
                       icon: Icon(

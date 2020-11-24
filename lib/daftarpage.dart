@@ -210,12 +210,12 @@ class _DaftarPageState extends State<DaftarPage> {
                     FlatButton(
                         color: red,
                         onPressed: () {
-                          createuser();
+                          // createuser();
 
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => DatapersonalPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DatapersonalPage()));
                         },
                         child: Container(
                           alignment: Alignment.center,

@@ -148,9 +148,9 @@ class _MyDokterPageState extends State<MyDokterPage> {
                       child: Text(
                         'Dokter Ku',
                         style: GoogleFonts.poppins(
-                          color: black,
-                          fontSize: 25,
-                        ),
+                            color: black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

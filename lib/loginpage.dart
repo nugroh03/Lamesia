@@ -215,12 +215,12 @@ class _LoginPageState extends State<LoginPage> {
                         FlatButton(
                             color: red,
                             onPressed: () {
-                              login();
+                              // login();
 
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => MenuPage()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MenuPage()));
                             },
                             child: Container(
                               alignment: Alignment.center,

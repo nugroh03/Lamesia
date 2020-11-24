@@ -102,10 +102,11 @@ class _ScreenOpeningState extends State<ScreenOpening> {
                       ),
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.03,
-                      width: MediaQuery.of(context).size.width * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.035,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       alignment: Alignment.topCenter,
                       child: FlatButton(
+                          padding: EdgeInsets.only(left: 10, right: 10),
                           color: red,
                           onPressed: () {
                             print(_currentPage);
@@ -123,6 +124,7 @@ class _ScreenOpeningState extends State<ScreenOpening> {
                           },
                           child: Container(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Flexible(
                                   flex: 3,
@@ -131,19 +133,20 @@ class _ScreenOpeningState extends State<ScreenOpening> {
                                     child: AutoSizeText(
                                       'BERIKUT',
                                       style: GoogleFonts.roboto(
-                                          fontSize: 17, color: textwhite),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17,
+                                          color: textwhite),
                                     ),
                                   ),
                                 ),
                                 Flexible(
                                   flex: 1,
                                   child: Container(
-                                    alignment: Alignment.center,
+                                    alignment: Alignment.centerRight,
                                     child: LayoutBuilder(
                                         builder: (context, constraint) {
                                       return new Icon(Icons.forward,
-                                          color: white,
-                                          size: constraint.biggest.height);
+                                          color: white, size: 28);
                                     }),
                                   ),
                                 )
