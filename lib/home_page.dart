@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/avd.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/daftarpage.dart';
 import 'package:lamesia/datapersonal.dart';
@@ -28,22 +31,35 @@ class _HomePageState extends State<HomePage> {
   Widget menu(image, title, ket) {
     return Container(
       padding: EdgeInsets.all(10),
-      color: Colors.white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 3,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipOval(
-            child: Container(
-              color: Colors.red[50],
-              height: 60,
-              width: 60,
-              child: Icon(
-                image,
-                size: 40,
-                color: red,
-              ),
-            ),
+          Container(
+            width: 80,
+            height: 80,
+            child: CircleAvatar(
+                backgroundColor: Colors.red[50],
+                child: SvgPicture.asset(
+                  image,
+                  height: 55,
+                  width: 55,
+                )),
           ),
           SizedBox(
             height: 20,
@@ -66,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
     return Container(
       child: Scaffold(
-        backgroundColor: grey3,
+        backgroundColor: white,
         appBar: PreferredSize(
             child: Container(
               decoration: BoxDecoration(
@@ -123,56 +139,76 @@ class _HomePageState extends State<HomePage> {
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.height * 0.15)),
         body: Container(
+          padding: EdgeInsets.only(top: 20),
+          color: white,
           height: height,
-          padding: EdgeInsets.all(20),
           child: Column(
             children: [
               Flexible(
-                flex: 1,
-                child: Container(
-                  padding: EdgeInsets.all(5),
-                  color: white,
-                  child: Row(
-                    children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: Container(
-                                color: Colors.red[50],
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius: 3,
+                            blurRadius: 5,
+                            offset: Offset(0, 2), // changes position of shadow
+                          ),
+                        ]),
+                    padding: EdgeInsets.all(5),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Row(
+                            children: [
+                              Container(
                                 height: 60,
                                 width: 60,
-                                child: Icon(
-                                  Icons.medical_services_rounded,
-                                  size: 40,
-                                  color: Colors.red,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.red[50],
+                                  child: SvgPicture.asset(
+                                    'assets/noun_Ambulance_1908521.svg',
+                                    height: 40,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 20),
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Ambulan',
-                                      style: GoogleFonts.roboto(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold)),
-                                  Text('Panggil Ambulan',
-                                      style: GoogleFonts.roboto(
-                                        fontSize: 12,
-                                      )),
-                                ],
-                              ),
-                            )
-                          ],
+                              SizedBox(width: 20),
+                              Container(
+                                alignment: Alignment.bottomLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Ambulan',
+                                        style: GoogleFonts.roboto(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold)),
+                                    Text('Panggil Ambulan',
+                                        style: GoogleFonts.roboto(
+                                          fontSize: 12,
+                                        )),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.arrow_forward_ios_sharp)
-                    ],
+                        Spacer(),
+                        Icon(
+                          Icons.arrow_forward_ios_sharp,
+                          color: red,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -180,21 +216,25 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               Flexible(
-                flex: 6,
+                flex: 8,
                 child: Container(
-                  height: height,
+                  color: white,
+                  alignment: Alignment.center,
                   child: GridView.count(
+                      padding: EdgeInsets.only(
+                          top: 10, right: 20, left: 20, bottom: 20),
                       physics: NeverScrollableScrollPhysics(),
                       childAspectRatio: 1.4 / 1.2,
                       crossAxisSpacing: 20,
                       mainAxisSpacing: 20,
                       crossAxisCount: 2,
                       children: [
-                        menu(Icons.emoji_people, 'Dokter', 'Cari dokter'),
-                        menu(Icons.local_hospital, 'Klinik',
+                        menu('assets/Group 84.svg', 'Dokter', 'Cari dokter'),
+                        menu('assets/Group 85.svg', 'Klinik',
                             'Daftar klinik terdekat'),
-                        menu(Icons.nature_people, 'Perawat', 'Cari Perawat'),
-                        menu(Icons.emoji_food_beverage, 'Apotek', 'Beli Obat'),
+                        menu('assets/Path 6572.svg', 'Perawat', 'Cari Perawat'),
+                        menu('assets/noun_Pharmacy_2080745.svg', 'Apotek',
+                            'Beli Obat'),
                       ]),
                 ),
               )

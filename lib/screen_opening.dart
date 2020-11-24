@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/loginpage.dart';
 import 'color.dart';
 import 'slider.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/avd.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ScreenOpening extends StatefulWidget {
   ScreenOpening({Key key, this.title}) : super(key: key);
@@ -31,17 +34,17 @@ class _ScreenOpeningState extends State<ScreenOpening> {
     SliderPage(
       title: 'Tenaga Medis ',
       title1: 'Professional',
-      image: 'assets/contoh.jpg',
+      image: 'assets/Group 104.svg',
     ),
     SliderPage(
       title: 'Kemudahan',
       title1: 'Membuat Janji',
-      image: 'assets/contoh.jpg',
+      image: 'assets/Group 105.svg',
     ),
     SliderPage(
       title: 'Hadir ',
       title1: 'Kerumah Anda',
-      image: 'assets/contoh.jpg',
+      image: 'assets/Group 106.svg',
     ),
   ];
 

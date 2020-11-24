@@ -28,9 +28,23 @@ class _MyDokterPageState extends State<MyDokterPage> {
     title,
   ) {
     return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       padding: EdgeInsets.all(10),
       width: MediaQuery.of(context).size.width,
-      color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,38 +128,30 @@ class _MyDokterPageState extends State<MyDokterPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: grey3,
+      backgroundColor: white,
       appBar: PreferredSize(
           child: Container(
             decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(width: 1, color: red))),
-            padding: EdgeInsets.only(left: 20, right: 20, top: 5),
+            padding: EdgeInsets.only(left: 20, right: 20, top: 30),
             height: height,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Flexible(
                   flex: 3,
                   child: Container(
                     alignment: Alignment.bottomLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                            alignment: Alignment.centerLeft,
-                            child: InkWell(
-                                child: Icon(Icons.arrow_back), onTap: () {})),
-                        SizedBox(
-                          width: 10,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Dokter Ku',
+                        style: GoogleFonts.poppins(
+                          color: black,
+                          fontSize: 25,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Text('Dokter Ku',
-                              style: GoogleFonts.poppins(
-                                  fontSize: 20, fontWeight: FontWeight.bold)),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),

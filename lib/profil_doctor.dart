@@ -23,123 +23,154 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
   }
 
   Widget photoprofil() {
-    return Container(
-      padding: EdgeInsets.only(top: 20),
-      width: MediaQuery.of(context).size.width,
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Column(
-              children: [
-                SizedBox(height: 30),
-                ClipOval(
-                  child: Container(
-                    color: Colors.red[50],
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: Icon(
-                      Icons.emoji_people,
-                      size: 100,
-                      color: red,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('Nama Dokter',
-                          style: GoogleFonts.poppins(
-                              fontSize: 25, fontWeight: FontWeight.bold)),
-                      Container(
-                        child: Text('Dokter Umum',
-                            style: GoogleFonts.poppins(
-                                fontSize: 18, color: grey2)),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 10, left: 10),
-            alignment: Alignment.centerRight,
-            child: Container(
-              padding: EdgeInsets.only(left: 20, right: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ]),
+        padding: EdgeInsets.only(top: 20),
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Column(
                 children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.flash_on,
-                          size: 30,
-                          color: red,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('2 Tahun',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold)),
-                              Text('Pengalaman',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 12, color: grey2)),
-                            ],
-                          ),
-                        ),
-                      ],
+                  SizedBox(height: 30),
+                  ClipOval(
+                    child: Container(
+                      color: Colors.red[50],
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Icon(
+                        Icons.emoji_people,
+                        size: 100,
+                        color: red,
+                      ),
                     ),
                   ),
+                  SizedBox(width: 10),
                   Container(
-                    child: Row(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.star,
-                          size: 30,
-                          color: red,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('Unfavorite',
+                        Text('Nama Dokter',
                             style: GoogleFonts.poppins(
-                                fontSize: 12, fontWeight: FontWeight.bold)),
+                                fontSize: 25, fontWeight: FontWeight.bold)),
+                        Container(
+                          child: Text('Dokter Umum',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 18, color: grey2)),
+                        ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-        ],
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 10, left: 10),
+              alignment: Alignment.centerRight,
+              child: Container(
+                padding: EdgeInsets.only(left: 20, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.flash_on,
+                            size: 30,
+                            color: red,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('2 Tahun',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold)),
+                                Text('Pengalaman',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12, color: grey2)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            size: 30,
+                            color: red,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Unfavorite',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 12, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget dokumenvalidasi() {
     return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       height: MediaQuery.of(context).size.height * 0.08,
-      color: white,
       child: Row(
         children: [
           Flexible(
@@ -159,8 +190,8 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               alignment: Alignment.centerLeft,
               height: MediaQuery.of(context).size.height * 0.08,
               padding: EdgeInsets.only(left: 10),
-              decoration:
-                  BoxDecoration(border: Border(left: BorderSide(width: 1))),
+              decoration: BoxDecoration(
+                  border: Border(left: BorderSide(width: 1, color: gray))),
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Dokumen Validasi',
@@ -174,7 +205,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Icon(
                 Icons.arrow_forward_ios,
-                color: grey2,
+                color: gray,
                 size: 20,
               ),
             ),
@@ -187,7 +218,21 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
   Widget kualifikasi_dan_pengalman() {
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
-      color: white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       child: Row(
         children: [
           Flexible(
@@ -207,8 +252,8 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               alignment: Alignment.centerLeft,
               height: MediaQuery.of(context).size.height * 0.08,
               padding: EdgeInsets.only(left: 10),
-              decoration:
-                  BoxDecoration(border: Border(left: BorderSide(width: 1))),
+              decoration: BoxDecoration(
+                  border: Border(left: BorderSide(width: 1, color: gray))),
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Kualifikasi dan Pengalaman',
@@ -222,7 +267,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Icon(
                 Icons.arrow_forward_ios,
-                color: grey2,
+                color: gray,
                 size: 20,
               ),
             ),
@@ -235,7 +280,21 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
   Widget personalInformation() {
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
-      color: white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       child: Row(
         children: [
           Flexible(
@@ -255,8 +314,8 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               alignment: Alignment.centerLeft,
               height: MediaQuery.of(context).size.height * 0.08,
               padding: EdgeInsets.only(left: 10),
-              decoration:
-                  BoxDecoration(border: Border(left: BorderSide(width: 1))),
+              decoration: BoxDecoration(
+                  border: Border(left: BorderSide(width: 1, color: gray))),
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Personal Information',
@@ -270,7 +329,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Icon(
                 Icons.arrow_forward_ios,
-                color: grey2,
+                color: gray,
                 size: 20,
               ),
             ),
@@ -283,7 +342,21 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
   Widget reviews() {
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
-      color: white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       child: Row(
         children: [
           Flexible(
@@ -303,8 +376,8 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               alignment: Alignment.centerLeft,
               height: MediaQuery.of(context).size.height * 0.08,
               padding: EdgeInsets.only(left: 10),
-              decoration:
-                  BoxDecoration(border: Border(left: BorderSide(width: 1))),
+              decoration: BoxDecoration(
+                  border: Border(left: BorderSide(width: 1, color: gray))),
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Reviews',
@@ -318,7 +391,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Icon(
                 Icons.arrow_forward_ios,
-                color: grey2,
+                color: gray,
                 size: 20,
               ),
             ),
@@ -333,7 +406,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: grey3,
+      backgroundColor: white,
       appBar: PreferredSize(
           child: Container(
             decoration: BoxDecoration(
@@ -375,31 +448,32 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08)),
       body: Container(
+          color: white,
           child: Column(
-        children: [
-          photoprofil(),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                dokumenvalidasi(),
-                SizedBox(
-                  height: 10,
+            children: [
+              photoprofil(),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    dokumenvalidasi(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    kualifikasi_dan_pengalman(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    personalInformation(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    reviews(),
+                  ],
                 ),
-                kualifikasi_dan_pengalman(),
-                SizedBox(
-                  height: 10,
-                ),
-                personalInformation(),
-                SizedBox(
-                  height: 10,
-                ),
-                reviews(),
-              ],
-            ),
-          )
-        ],
-      )),
+              )
+            ],
+          )),
     );
   }
 }

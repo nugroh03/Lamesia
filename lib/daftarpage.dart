@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/datapersonal.dart';
+import 'package:lamesia/menu_page.dart';
 import 'color.dart';
+import 'dart:convert';
+import 'config.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DaftarPage extends StatefulWidget {
   DaftarPage({Key key, this.title}) : super(key: key);
@@ -13,9 +18,44 @@ class DaftarPage extends StatefulWidget {
 }
 
 class _DaftarPageState extends State<DaftarPage> {
+  final nama = TextEditingController();
+  final email = TextEditingController();
+  final phone = TextEditingController();
+  final password = TextEditingController();
+
   @override
   void initState() {
     super.initState();
+  }
+
+  void createuser() async {
+    print('akses api');
+
+    Map data = {
+      'name': nama.text,
+      'email': email.text,
+      'phone': phone.text,
+      'password': password.text,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    print(body);
+    var url = apiurl + 'create_user';
+
+    // Await the http get response, then decode the json-formatted response.
+    var response = await http.post(url,
+        headers: {"Content-Type": "application/json"}, body: body);
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      var responses = Responses(jsonResponse);
+
+      if (responses.success == "true") {
+        print('create_user: ' + json.encode(responses.data));
+
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DatapersonalPage()));
+      } else {}
+    } else {}
   }
 
   @override
@@ -67,6 +107,7 @@ class _DaftarPageState extends State<DaftarPage> {
                             padding: EdgeInsets.only(top: 5),
                             height: 50,
                             child: TextField(
+                              controller: nama,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(5),
                                 hintText: 'Nama',
@@ -94,6 +135,7 @@ class _DaftarPageState extends State<DaftarPage> {
                             padding: EdgeInsets.only(top: 5),
                             height: 50,
                             child: TextField(
+                              controller: email,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(5),
                                 hintText: 'Email',
@@ -121,6 +163,7 @@ class _DaftarPageState extends State<DaftarPage> {
                             padding: EdgeInsets.only(top: 5),
                             height: 50,
                             child: TextField(
+                              controller: phone,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(5),
                                 hintText: 'Nomor Hanphone',
@@ -148,6 +191,7 @@ class _DaftarPageState extends State<DaftarPage> {
                             padding: EdgeInsets.only(top: 5),
                             height: 50,
                             child: TextField(
+                              controller: password,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(5),
                                 hintText: 'Password',
@@ -166,10 +210,12 @@ class _DaftarPageState extends State<DaftarPage> {
                     FlatButton(
                         color: red,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DatapersonalPage()));
+                          createuser();
+
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => DatapersonalPage()));
                         },
                         child: Container(
                           alignment: Alignment.center,
@@ -187,5 +233,16 @@ class _DaftarPageState extends State<DaftarPage> {
         ),
       ),
     );
+  }
+}
+
+class Responses {
+  String success;
+  String message;
+  String data;
+  Responses(Map<String, dynamic> item) {
+    success = item['success'];
+    message = item['message'];
+    data = item['data'];
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/chat_page.dart';
 import 'package:lamesia/daftarpage.dart';
@@ -80,31 +81,31 @@ class _MenuPageState extends State<MenuPage> {
         buttonBackgroundColor: white,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 600),
-        height: 50,
+        height: 45,
         items: <Widget>[
-          Icon(
-            Icons.home,
-            size: 40,
+          SvgPicture.asset(
+            'assets/Icon.svg',
+            height: 25,
             color: red,
           ),
-          Icon(
-            Icons.chat,
-            size: 40,
+          SvgPicture.asset(
+            'assets/Icon-2.svg',
+            height: 25,
             color: red,
           ),
-          Icon(
-            Icons.medical_services,
-            size: 40,
+          SvgPicture.asset(
+            'assets/Icon-4.svg',
+            height: 25,
             color: red,
           ),
-          Icon(
-            Icons.calendar_today,
-            size: 40,
+          SvgPicture.asset(
+            'assets/Icon-6.svg',
+            height: 25,
             color: red,
           ),
-          Icon(
-            Icons.person,
-            size: 40,
+          SvgPicture.asset(
+            'assets/Icon-8.svg',
+            height: 25,
             color: red,
           ),
         ],

@@ -66,7 +66,21 @@ class _JanjiTemuState extends State<JanjiTemu>
     return Container(
       padding: EdgeInsets.all(10),
       width: MediaQuery.of(context).size.width,
-      color: white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.4),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -334,6 +348,7 @@ class _JanjiTemuState extends State<JanjiTemu>
     return Visibility(
       visible: _jtvisible,
       child: Scaffold(
+        backgroundColor: white,
         appBar: PreferredSize(
             child: Container(
               alignment: Alignment.centerLeft,
@@ -343,7 +358,7 @@ class _JanjiTemuState extends State<JanjiTemu>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Data Personal',
+                    'Janji Temu',
                     style: GoogleFonts.poppins(
                       color: black,
                       fontSize: 25,
@@ -752,6 +767,7 @@ class _JanjiTemuState extends State<JanjiTemu>
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: white,
       child: Stack(
         children: [
           Positioned(child: janjiTemu()),

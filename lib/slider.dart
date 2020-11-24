@@ -3,6 +3,9 @@ import 'package:lamesia/datapersonal.dart';
 import 'package:lamesia/loginpage.dart';
 import 'color.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/avd.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SliderPage extends StatelessWidget {
   final String title;
@@ -14,6 +17,7 @@ class SliderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.only(top: 5),
       color: white,
@@ -46,25 +50,26 @@ class SliderPage extends StatelessWidget {
                 Text(
                   title,
                   style: GoogleFonts.roboto(
-                    color: textred,
-                    fontSize: 30,
-                  ),
+                      color: textred,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
                 ),
                 Text(
                   title1,
                   style: GoogleFonts.roboto(
-                    fontSize: 30,
+                    fontSize: 40,
                   ),
                 ),
               ],
             ),
           ),
           SizedBox(
-            height: 100,
+            height: height * 0.03,
           ),
-          Image.asset(
+          SvgPicture.asset(
             image,
-            width: width * 0.5,
+            height: height * 0.5,
+            width: width * 0.4,
           )
         ],
       ),
