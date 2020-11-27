@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lamesia/menu_page.dart';
@@ -196,150 +197,155 @@ class _JanjiTemuState extends State<JanjiTemu>
   Widget notifjanjitemu() {
     return Visibility(
         visible: _notifjanjitemu,
-        child: Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-              color: white,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          height: MediaQuery.of(context).size.height * 0.75,
-          width: MediaQuery.of(context).size.width * 0.9,
-          child: Column(
-            children: [
-              Flexible(
-                flex: 1,
-                child: Container(
-                  alignment: Alignment.center,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            height: MediaQuery.of(context).size.height * 0.75,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Column(
+              children: [
+                Flexible(
+                  flex: 1,
                   child: Container(
-                      child: Icon(
-                    Icons.calendar_today,
-                    color: Colors.red,
-                    size: 80,
-                  )),
+                    alignment: Alignment.center,
+                    child: Container(
+                        child: Icon(
+                      Icons.calendar_today,
+                      color: Colors.red,
+                      size: 60,
+                    )),
+                  ),
                 ),
-              ),
-              Flexible(
-                flex: 4,
-                child: Container(
-                  child: Column(
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          width: MediaQuery.of(context).size.width,
-                          child: Column(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: Text(
-                                  'Janji Temu Anda',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Flexible(
-                                flex: 3,
-                                child: Text(
-                                  'Segera untuk menemui dokter anda tepat sesuai dengan waktu yang telah anda tentukan',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 18,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                ),
+                Flexible(
+                  flex: 7,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  child: AutoSizeText(
+                                    'Janji Temu Anda',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Flexible(
+                                  flex: 3,
+                                  child: AutoSizeText(
+                                    'Segera untuk menemui dokter anda tepat sesuai dengan waktu yang telah anda tentukan',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              TextField(
-                                controller: isiklinik,
-                                decoration: InputDecoration(
+                        Flexible(
+                          flex: 3,
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                TextField(
+                                  controller: isiklinik,
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.local_hospital,
+                                        size: 30,
+                                      ),
+                                      labelStyle: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                      labelText: 'Klinik',
+                                      hintStyle: TextStyle(color: grey3),
+                                      hintText: 'Nama Klinik'),
+                                ),
+                                TextField(
+                                  controller: isidokter,
+                                  decoration: InputDecoration(
                                     suffixIcon: Icon(
-                                      Icons.local_hospital,
+                                      Icons.people,
                                       size: 30,
                                     ),
                                     labelStyle: TextStyle(
                                       fontSize: 20,
                                     ),
-                                    labelText: 'Klinik',
-                                    hintStyle: TextStyle(color: grey3),
-                                    hintText: 'Nama Klinik'),
-                              ),
-                              TextField(
-                                controller: isidokter,
-                                decoration: InputDecoration(
-                                  suffixIcon: Icon(
-                                    Icons.people,
-                                    size: 30,
+                                    labelText: 'Dokter',
                                   ),
-                                  labelStyle: TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  labelText: 'Dokter',
                                 ),
-                              ),
-                              TextField(
-                                controller: isitanggal,
-                                decoration: InputDecoration(
-                                  suffixIcon: Icon(
-                                    Icons.calendar_today,
-                                    size: 30,
+                                TextField(
+                                  controller: isitanggal,
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.calendar_today,
+                                      size: 30,
+                                    ),
+                                    labelStyle: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                    labelText: 'Tanggal',
                                   ),
-                                  labelStyle: TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  labelText: 'Tanggal',
                                 ),
-                              ),
-                              TextField(
-                                controller: isijam,
-                                decoration: InputDecoration(
-                                  suffixIcon: Icon(
-                                    Icons.lock_clock,
-                                    size: 30,
+                                TextField(
+                                  controller: isijam,
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.lock_clock,
+                                      size: 30,
+                                    ),
+                                    labelStyle: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                    labelText: 'Jam',
                                   ),
-                                  labelStyle: TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  labelText: 'Jam',
                                 ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.01,
-                              ),
-                              FlatButton(
-                                  color: red,
-                                  textColor: white,
-                                  minWidth:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  onPressed: () {
-                                    setState(() {
-                                      _blockvisible = false;
-                                      _notifjanjitemu = false;
-                                      _jtvisible = true;
-                                    });
-                                  },
-                                  child: Text('OK'))
-                            ],
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.01,
+                                ),
+                                FlatButton(
+                                    color: red,
+                                    textColor: white,
+                                    minWidth:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    onPressed: () {
+                                      setState(() {
+                                        _blockvisible = false;
+                                        _notifjanjitemu = false;
+                                        _jtvisible = true;
+                                      });
+                                    },
+                                    child: Text('OK'))
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ));
   }

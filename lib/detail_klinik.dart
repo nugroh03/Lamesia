@@ -142,86 +142,93 @@ class _DetailKlinikState extends State<DetailKlinik>
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                FlatButton(
-                  height: 20,
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      side: BorderSide(color: Colors.red)),
-                  color: Colors.red[50],
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfilDoctorKlinik()));
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            child: Icon(
-                              Icons.person,
-                              size: 20,
-                              color: red,
+                Flexible(
+                  flex: 1,
+                  child: FlatButton(
+                    height: 20,
+                    padding: EdgeInsets.all(5),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(color: Colors.red)),
+                    color: Colors.red[50],
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfilDoctorKlinik()));
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            child: Container(
+                              child: Icon(
+                                Icons.person,
+                                size: 20,
+                                color: red,
+                              ),
                             ),
                           ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text('Profil',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 12, color: red)),
+                          Flexible(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text('Profil',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12, color: red)),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 30,
+                  width: MediaQuery.of(context).size.width * 0.05,
                 ),
-                FlatButton(
-                  height: 20,
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      side: BorderSide(color: Colors.red)),
-                  color: Colors.red[50],
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BuatJanji()));
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: SvgPicture.asset(
-                              'assets/Icon-6.svg',
-                              height: 20,
+                Flexible(
+                  flex: 1,
+                  child: FlatButton(
+                    height: 20,
+                    padding: EdgeInsets.all(5),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(color: Colors.red)),
+                    color: Colors.red[50],
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BuatJanji()));
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      height: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: SvgPicture.asset(
+                                'assets/Icon-6.svg',
+                                height: 20,
+                              ),
                             ),
                           ),
-                        ),
-                        Flexible(
-                          flex: 2,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: AutoSizeText('Buat janji ',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 12, color: red)),
+                          Flexible(
+                            flex: 2,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: AutoSizeText('Buat janji ',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12, color: red)),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

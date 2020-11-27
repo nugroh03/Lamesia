@@ -109,8 +109,8 @@ class _LoginPageState extends State<LoginPage> {
                 flex: 1,
                 child: Container(
                   alignment: Alignment.centerLeft,
-                  height: 100,
-                  width: 300,
+                  height: MediaQuery.of(context).size.height * 0.15,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   child: Image.asset(
                     'assets/Logo Lamesia.png',
                   ),
@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: MediaQuery.of(context).size.height * 0.03,
                         ),
                         Container(
                           child: Column(
@@ -210,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.12,
                         ),
                         FlatButton(
                             color: red,
@@ -231,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             )),
                         SizedBox(
-                          height: 5,
+                          height: MediaQuery.of(context).size.height * 0.05,
                         ),
                         Container(
                           alignment: Alignment.center,
