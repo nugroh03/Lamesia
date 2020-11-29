@@ -32,6 +32,15 @@ class _BuatJanjiState extends State<BuatJanji>
   final isitanggal = new TextEditingController();
   final isijam = new TextEditingController();
 
+  final List<String> timejanji = [
+    '07:00',
+    '09:00',
+    '14:00',
+    '16:00',
+    '19:00',
+    '20:00',
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -609,11 +618,84 @@ class _BuatJanjiState extends State<BuatJanji>
   }
 
   Widget waktu() {
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [TableCalendar(calendarController: _controller)],
-        ),
+    return Container(
+      padding: EdgeInsets.all(10),
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        children: [
+          Container(
+              decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 3,
+                      blurRadius: 5,
+                      offset: Offset(0, 2), // changes position of shadow
+                    ),
+                  ]),
+              child: TableCalendar(
+                  calendarStyle: CalendarStyle(selectedColor: red),
+                  calendarController: _controller)),
+          Container(
+            alignment: Alignment.centerLeft,
+            height: 50,
+            child: Text(
+              'Waktu Tersedia',
+              style: GoogleFonts.poppins(color: black, fontSize: 16),
+            ),
+          ),
+          Flexible(
+            child: Container(
+                alignment: Alignment.center,
+                child: GridView.count(
+                  physics: NeverScrollableScrollPhysics(),
+                  childAspectRatio: 16 / 7,
+                  crossAxisCount: 5,
+                  children: timejanji
+                      .map<Widget>((item) => Card(
+                            shadowColor: grey,
+                            color: white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(item),
+
+                              /*child: FlatButton(
+                                child: Container(
+                                  padding: EdgeInsets.all(20),
+                                  child: Image.asset(item),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _blockvisible = true;
+                                    _ceklist = true;
+                                  });
+                                },
+                              ),*/
+                            ),
+                          ))
+                      .toList(),
+                )),
+          ),
+          Container(
+            child: FlatButton(
+                color: red,
+                onPressed: () {
+                  _toggleTab();
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'BERIKUT',
+                    style: GoogleFonts.poppins(fontSize: 20, color: textwhite),
+                  ),
+                )),
+          ),
+        ],
       ),
     );
   }
