@@ -329,7 +329,7 @@ class _ProfilPenggunaState extends State<ProfilPengguna> {
       child: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.90,
+          height: MediaQuery.of(context).size.height * 0.9,
           width: MediaQuery.of(context).size.width * 0.9,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -381,13 +381,13 @@ class _ProfilPenggunaState extends State<ProfilPengguna> {
                     Flexible(
                       flex: 1,
                       child: Container(
-                        padding: EdgeInsets.only(left: 20, right: 20),
+                        padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              height: MediaQuery.of(context).size.height * 0.18,
+                              height: MediaQuery.of(context).size.height * 0.10,
                               width: MediaQuery.of(context).size.width * 0.25,
                               child: CircleAvatar(
                                 backgroundColor: red,
@@ -407,7 +407,7 @@ class _ProfilPenggunaState extends State<ProfilPengguna> {
                                     Icon(
                                       Icons.camera_alt,
                                       color: grey2,
-                                      size: 25,
+                                      size: 20,
                                     ),
                                     SizedBox(
                                       width: MediaQuery.of(context).size.width *
@@ -425,7 +425,7 @@ class _ProfilPenggunaState extends State<ProfilPengguna> {
                       ),
                     ),
                     Flexible(
-                      flex: 2,
+                      flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
                           border:
@@ -571,7 +571,7 @@ class _ProfilPenggunaState extends State<ProfilPengguna> {
                               ),
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.08,
+                              height: MediaQuery.of(context).size.height * 0.02,
                             ),
                             FlatButton(
                                 color: red,

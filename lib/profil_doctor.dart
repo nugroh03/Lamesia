@@ -160,7 +160,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               offset: Offset(0, 2), // changes position of shadow
             ),
           ]),
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.06,
       child: Row(
         children: [
           Flexible(
@@ -185,7 +185,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Dokumen Validasi',
-                style: GoogleFonts.poppins(fontSize: 20, color: black),
+                style: GoogleFonts.poppins(fontSize: 18, color: black),
               ),
             ),
           ),
@@ -207,7 +207,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
 
   Widget kualifikasi_dan_pengalman() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -247,7 +247,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Kualifikasi dan Pengalaman',
-                style: GoogleFonts.poppins(fontSize: 20, color: black),
+                style: GoogleFonts.poppins(fontSize: 18, color: black),
               ),
             ),
           ),
@@ -269,7 +269,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
 
   Widget personalInformation() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -309,7 +309,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Personal Information',
-                style: GoogleFonts.poppins(fontSize: 20, color: black),
+                style: GoogleFonts.poppins(fontSize: 18, color: black),
               ),
             ),
           ),
@@ -331,7 +331,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
 
   Widget reviews() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -371,7 +371,7 @@ class _ProfilDoctorState extends State<ProfilDoctor> {
               width: MediaQuery.of(context).size.width,
               child: Text(
                 'Reviews',
-                style: GoogleFonts.poppins(fontSize: 20, color: black),
+                style: GoogleFonts.poppins(fontSize: 18, color: black),
               ),
             ),
           ),
